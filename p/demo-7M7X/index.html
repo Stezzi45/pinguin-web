@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Démo Pinguin WEB</title>
+    <style>
+      body { font: 16px/1.6 system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #1b1e34; }
+      h1 { color: #6c7bff; }
+      button { font: inherit; padding: 10px 16px; border-radius: 8px; border: 1px solid #6c7bff; background: #6c7bff; color: #fff; cursor: pointer; }
+      button.ghost { background: #fff; color: #6c7bff; }
+      input, textarea { font: inherit; width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 8px; margin: 6px 0; box-sizing: border-box; }
+      .card { border: 1px solid #e1e3f0; border-radius: 12px; padding: 20px; margin: 18px 0; }
+      label { font-size: 14px; color: #555; }
+    </style>
+  </head>
+  <body>
+    <h1>🐧 Page de démo</h1>
+    <p>Cette page est publiée via Pinguin WEB. Elle émet des événements vers le panel.</p>
+
+    <div class="card">
+      <h3>BUTTON_CLICKED</h3>
+      <!-- data-pinguin => événement BUTTON_CLICKED au clic -->
+      <button data-pinguin data-pinguin-label="Bouton principal">Clique-moi</button>
+    </div>
+
+    <div class="card">
+      <h3>CUSTOM_EVENT</h3>
+      <!-- data-pinguin="custom" => CUSTOM_EVENT -->
+      <button class="ghost" data-pinguin="custom" data-pinguin-name="newsletter">
+        Événement personnalisé
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>FORM_SUBMITTED</h3>
+      <!-- Déclare "message" comme Panel Form Field à l'import.
+           "email_prive" ne sera PAS configuré => jamais transmis. -->
+      <form>
+        <label>Message (champ connecté au panel)</label>
+        <input name="message" placeholder="Votre message…" />
+        <label>Email privé (NON connecté — sera ignoré)</label>
+        <input name="email_prive" placeholder="ne sera pas transmis" />
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+
+    <p style="color:#888">PAGE_OPENED est envoyé automatiquement au chargement.</p>
+  <!-- pinguin-web:injected -->
+<script>window.__PINGUIN__={"apiBase":"https://pinguin-web.darkvadiou.workers.dev","pageId":"cIi-A_0KjVaZ0r6MpwYi7Q","allowedEvents":["PAGE_OPENED"],"formFields":["message","email_prive"],"version":1};</script>
+<script src="https://pinguin-web.darkvadiou.workers.dev/pinguin-client.js" async defer></script>
+<!-- /pinguin-web:injected -->
+</body>
+</html>
